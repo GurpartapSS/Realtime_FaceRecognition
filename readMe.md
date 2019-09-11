@@ -1,1 +1,0 @@
-Inspired by Happy Face assignment form the coursera's specialization course on Deep Learning, I sought to make my own face recognition system.
