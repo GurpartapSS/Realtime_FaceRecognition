@@ -16,3 +16,7 @@ code for this can be found at : https://github.com/davidsandberg/facenet/tree/ma
 2. https://research.fb.com/publications/deepface-closing-the-gap-to-human-level-performance-in-face-verification/
 3. https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf (Saimese Network)
 4. http://jmlr.csail.mit.edu/papers/volume10/weinberger09a/weinberger09a.pdf (KNN)
+
+The results of the simple face_DNN code is below(PS it used very basic classification): 
+
+![](results\faces1.png)
