@@ -19,4 +19,4 @@ code for this can be found at : https://github.com/davidsandberg/facenet/tree/ma
 
 The results of the simple face_DNN code is below(PS it used very basic classification): 
 
-![](results\faces1.png)
+![](results/faces1.png)
