@@ -6,7 +6,7 @@ After having completed the Specialization course by Deeplearning.ai, I wanted to
 One such application was face recognition using ONE SHOT LEARNING.
 I have been working on building a face detection system, currently training the network using MegaFace Dataset http://megaface.cs.washington.edu/dataset/download.html
 
-The modules uploaded here are built using pertrained model from https://github.com/iwantooxxoox/Keras-OpenFace
+The modules uploaded here are from my first attempt to build Face recognition system using simple classifier.
 
 
 Here is a list of all the papers, refered during the project:
