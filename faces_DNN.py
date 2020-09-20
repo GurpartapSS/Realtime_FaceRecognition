@@ -2,8 +2,8 @@ import numpy as np
 import cv2
 import pickle 
 
-modelFile = "res10_300x300_ssd_iter_140000_fp16.caffemodel"
-configFile = "deploy.prototxt"
+modelFile = r"Inputs\res10_300x300_ssd_iter_140000_fp16.caffemodel"
+configFile = r"Inputs\deploy.prototxt"
 net = cv2.dnn.readNetFromCaffe(configFile, modelFile)
 conf_threshold = .5
 
