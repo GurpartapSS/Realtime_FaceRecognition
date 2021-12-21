@@ -17,6 +17,10 @@ with open("labels.pickle","rb") as f:
 
 cap = cv2.VideoCapture(0)
 
+cacheArea = 0
+cacheCenterX = 0
+cacheCentery = 0
+
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
@@ -52,7 +56,7 @@ while(True):
 
     # filter out weak detections by ensuring the `confidence` is
     # greater than the minimum confidence
-        if confidence > .6:
+        if confidence > .7:
         # compute the (x, y)-coordinates of the bounding box for the
         # object
             box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
@@ -67,6 +71,38 @@ while(True):
                 color = (255,255,255)
                 stroke = 2
                 cv2.putText(frame, name, (startX,startY),font,1,color,stroke,cv2.LINE_AA)
+                #Get the Area of the rect to know the position in Z
+                #Get the centre of face to know if moving in XY
+                #set the step parameter according to the sizeof face detected
+                Area =  abs((startX-endX)*(startY-endY))
+                centerY = abs(endX-startX)/2
+                centerX = abs(endY-startY)/2
+                textZ = ""
+                textX = ""
+                textY = ""
+
+                if Area > (cacheArea + 3000):
+                    textZ = "closing down" 
+                elif Area < (cacheArea - 3000):
+                    textZ = "backing out" 
+
+                if cacheCenterX < (centerX - 4):
+                    textX = "Left" 
+                elif cacheCenterX > (centerX + 4):
+                    textX = "Right" 
+                
+                if cacheCentery < (centerY - 4):
+                    textY = "down" 
+                elif cacheCentery > (centerY + 4):
+                    textY = "up" 
+                cv2.putText(frame, textZ, (endX,startY),font,1,(0,255,0),stroke,cv2.LINE_AA)
+                cv2.putText(frame, textX, (endX,startY+20),font,1,(225,0,255),stroke,cv2.LINE_AA)
+                cv2.putText(frame, textY, (endX,startY+40),font,1,(0,0,255),stroke,cv2.LINE_AA)
+                print("old Y",cacheCentery,"New Y",centerY)
+                print("old X",cacheCenterX,"New X",centerX)
+                cacheArea = Area
+                cacheCenterX = centerX
+                cacheCentery = centerY
         # draw the bounding box of the face along with the associated
         # probability
             #text = "{:.2f}%".format(confidence * 100)
